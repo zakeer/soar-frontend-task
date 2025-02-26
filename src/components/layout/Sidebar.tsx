@@ -22,7 +22,7 @@ const navigation: NavigationType[] = [
 
 export function Sidebar() {
   return (
-    <div className="w-64 border-r border-gray-100  bg-card">
+    <div className="w-64 border-r border-gray-200  bg-card">
       <div className="flex items-center gap-2 text-xl font-extrabold text-primary px-8 py-6">
         <img src={soarIcon} alt="Soar Task" />
         Soar Task

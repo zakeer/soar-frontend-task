@@ -2,7 +2,12 @@
   "files": [],
   "compilerOptions": {
     "strict": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "@/*": ["./src/*"],
+      "@icons/*": ["./src/assets/icons/"],
+      "@assets/*": ["./src/assets/*"]
+    }
   },
   "references": [
     { "path": "./tsconfig.app.json" },
