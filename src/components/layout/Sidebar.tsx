@@ -22,7 +22,7 @@ const navigation: NavigationType[] = [
 
 export function Sidebar() {
   return (
-    <div className="w-64 border-r border-gray-200  bg-card">
+    <div className="w-64 h-full border-r border-gray-200  bg-card">
       <div className="flex items-center gap-2 text-xl font-extrabold text-primary px-8 py-6">
         <img src={soarIcon} alt="Soar Task" />
         Soar Task
@@ -35,8 +35,8 @@ export function Sidebar() {
               key={item.href}
               to={item.href}
               className={({ isActive }) =>
-                `relative w-full flex justify-start gap-4 py-4 px-8 hover:opacity-100 ${
-                  isActive ? "" : "opacity-50"
+                `relative w-full flex justify-start gap-6 py-4 px-8 hover:opacity-100 ${
+                  isActive ? "" : "opacity-45"
                 }`
               }
             >

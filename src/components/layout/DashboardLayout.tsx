@@ -38,9 +38,7 @@ export function DashboardLayout({ children, title }: DashboardLayoutProps) {
             <Sidebar />
           </SheetContent>
         </Sheet>
-        <main className="p-4 md:p-6">
-          {title} {children}
-        </main>
+        <main className="p-4 md:p-6">{children}</main>
       </div>
     </div>
   );
