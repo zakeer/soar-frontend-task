@@ -1,8 +1,8 @@
 import { cn } from "@/lib/utils";
-import { TransactionIconProps } from "@/components/features/transactions/transaction.types";
 import PaypalIcon from "@/components/icons/Paypal";
 import CardTransferIcon from "@/components/icons/CardTransfer";
 import DollarTransferIcon from "@/components/icons/DollarTransfer";
+import { TransactionIconProps } from "./transaction.types";
 
 export function TransactionIcon({ type, className }: TransactionIconProps) {
   const iconMap = {

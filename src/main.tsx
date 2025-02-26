@@ -1,13 +1,15 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+
 import "./index.css";
 import App from "./App.tsx";
-import { BrowserRouter } from "react-router-dom";
+import { enableMockServerIfEnabled } from "@/mocks/mock-server.ts";
 
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </StrictMode>
-);
+const container = document.getElementById("root") as Element;
+const root = createRoot(container!);
+
+async function bootstrapApp() {
+  await enableMockServerIfEnabled();
+  root.render(<App />);
+}
+
+bootstrapApp();

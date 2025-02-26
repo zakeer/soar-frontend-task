@@ -1,5 +1,5 @@
-import { MyCards } from "@/components/features/cards/MyCards";
-import { RecentTransactions } from "@/components/features/transactions/RecentTransactions";
+import { MyCards } from "@/features/cards/MyCards";
+import { RecentTransactions } from "@/features/transactions/RecentTransactions";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { Typography } from "@/components/ui/typography";
 

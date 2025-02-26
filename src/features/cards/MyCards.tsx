@@ -1,50 +1,14 @@
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-// import { useCards } from "@/lib/api/queries"
 import { Skeleton } from "@/components/ui/skeleton";
 import { Card, CreditCard } from "./CreditCard";
-import { useEffect, useState } from "react";
 import { Typography } from "@/components/ui/typography";
 import { Button } from "@/components/ui/button";
-
-export const mockCards: Card[] = [
-  {
-    id: "1",
-    balance: 5756,
-    cardHolder: "Eddy Cusuma",
-    cardNumber: "3778 **** **** 1234",
-    validThru: "12/22",
-    type: "dark",
-  },
-  {
-    id: "2",
-    balance: 5756,
-    cardHolder: "Eddy Cusuma",
-    cardNumber: "3778 **** **** 1234",
-    validThru: "12/22",
-    type: "light",
-  },
-];
-
-function useCards() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState<Card[]>([]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-      setData(mockCards);
-    }, 5000 * 0);
-  }, []);
-
-  return {
-    isLoading,
-    data,
-    error: null,
-  };
-}
+import { useCards } from "@/features/cards/query/cards.queries";
+import log from "@/common/log";
 
 function CardList() {
   const { data: cards, isLoading, error } = useCards();
+  log.info({ cards });
 
   if (isLoading) {
     return (
