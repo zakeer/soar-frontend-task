@@ -5,6 +5,7 @@ import { Typography } from "@/components/ui/typography";
 import { Button } from "@/components/ui/button";
 import { useCards } from "@/features/cards/query/cards.queries";
 import log from "@/common/log";
+import { toast } from "react-toastify";
 
 function CardList() {
   const { data: cards, isLoading, error } = useCards();
@@ -36,6 +37,9 @@ function CardList() {
 }
 
 export function MyCards() {
+  const handleSeeAllClick = () =>
+    toast.info("My Cards Page implementation is in progress");
+
   return (
     <div className="flex flex-col gap-3">
       <header className="flex justify-between items-center">
@@ -43,7 +47,7 @@ export function MyCards() {
           My Cards
         </Typography>
 
-        <Button variant="link">
+        <Button variant="link" onClick={handleSeeAllClick}>
           <Typography>See All</Typography>
         </Button>
       </header>

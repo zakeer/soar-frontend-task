@@ -1,12 +1,17 @@
-import { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Typography } from "@/components/ui/typography";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useTransferContacts } from "@/features/transfer/query/transfer.queries";
+import {
+  useQuickTransferMutation,
+  useTransferContacts,
+} from "@/features/transfer/query/transfer.queries";
 import PaperPlaneIcon from "@/components/icons/PaperPlane";
+import { toast } from "react-toastify";
+import { Contact } from "@/features/transfer/transfer.types";
 
 function ContactCard({
   image,
@@ -53,8 +58,51 @@ function ContactCard({
 
 function TransferSection() {
   const { data, isLoading } = useTransferContacts();
-  const [selectedContact, setSelectedContact] = useState<string | null>(null);
+  const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
   const [amount, setAmount] = useState("525.50");
+
+  const handleAmountInputChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { value } = e.currentTarget;
+      if (!isNaN(+value)) {
+        setAmount(value);
+      }
+    },
+    []
+  );
+
+  const transferMutation = useQuickTransferMutation();
+
+  const handleTransfer = () => {
+    if (!selectedContact) return;
+
+    const toastId = toast.info("Transfer in progress...", {
+      autoClose: false,
+      closeButton: false,
+    });
+
+    transferMutation.mutate(
+      {
+        amount: Number.parseFloat(amount),
+        recipientId: selectedContact.id,
+        recipient: selectedContact.name,
+      },
+      {
+        onSuccess: () => {
+          toast.update(toastId, {
+            render: "Transfer successful!",
+            autoClose: 5000,
+          });
+        },
+        onError: () => {
+          toast.update(toastId, {
+            render: "Transfer failed. Please try again.",
+            autoClose: 5000,
+          });
+        },
+      }
+    );
+  };
 
   if (isLoading) {
     return (
@@ -74,8 +122,8 @@ function TransferSection() {
             <ContactCard
               key={contact.id}
               {...contact}
-              isSelected={selectedContact === contact.id}
-              onClick={() => setSelectedContact(contact.id)}
+              isSelected={selectedContact?.id === contact.id}
+              onClick={() => setSelectedContact(contact)}
             />
           ))}
         </div>
@@ -87,14 +135,15 @@ function TransferSection() {
         <div className="flex flex-1 gap-1 lg:gap-3 bg-primary/10 rounded-4xl overflow-hidden items-center">
           <Input
             value={amount}
-            onChange={(e) => setAmount(e.target.value)}
+            onChange={handleAmountInputChange}
             className="bg-transparent shadow-none border-0 text-[#718EBF] placeholder:text-[#718EBF] p-4 md:p-5"
             placeholder="Write Amount"
           />
           <Button
             variant="dark"
             className="rounded-full flex gap-2 items-center h-full w-28 md:w-34 shrink-0 text-md font-normal py-3"
-            disabled={!selectedContact}
+            disabled={!selectedContact || transferMutation.isPending}
+            onClick={handleTransfer}
           >
             Send
             <PaperPlaneIcon className="size-5 lg:size-7 ml-2" />
