@@ -17,7 +17,7 @@ export async function updateUserProfile(
   return response.data;
 }
 
-export async function uploadAvatar(file: File): Promise<any> {
+export async function uploadAvatar(file: File): Promise<object> {
   const formData = new FormData();
   formData.append("avatar", file);
   const response = await apiClient.post(ApiUrl.UPLOAD_AVATAR, formData, {

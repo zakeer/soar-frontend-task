@@ -14,7 +14,7 @@ const SettingsPage = () => {
               <TabsTrigger value="security">Security</TabsTrigger>
             </TabsList>
 
-            <TabsContent value="edit-profile" className="p-6">
+            <TabsContent value="edit-profile" className="p-2 md:p-6">
               <EditProfileForm />
             </TabsContent>
 

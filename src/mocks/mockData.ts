@@ -120,6 +120,5 @@ export const mockUserProfile: UserProfile = {
   city: "San Jose",
   postalCode: "45962",
   country: "USA",
-  avatar:
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-hs1nz18t2zhrYoY6sHrJFzrvBHpt5e.png", // Using the provided image URL
+  avatar: "https://avatar.iran.liara.run/public",
 };
