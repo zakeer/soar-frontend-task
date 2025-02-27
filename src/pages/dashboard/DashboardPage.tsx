@@ -2,6 +2,9 @@ import { MyCards } from "@/features/cards/MyCards";
 import { RecentTransactions } from "@/features/transactions/RecentTransactions";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { Typography } from "@/components/ui/typography";
+import { WeeklyActivity } from "@/features/activity/WeeklyActivityChart";
+import { ExpenseStatistics } from "@/features/expenses/ExpenseStatisticsChart";
+import { BalanceHistory } from "@/features/balance/BalanceHistoryChart";
 
 const DashboardPage = () => {
   return (
@@ -14,14 +17,10 @@ const DashboardPage = () => {
           <RecentTransactions />
         </div>
         <div className="col-span-8">
-          <Typography variant="h4" className="text-primary">
-            Weekly Activity
-          </Typography>
+          <WeeklyActivity />
         </div>
         <div className="col-span-4">
-          <Typography variant="h4" className="text-primary">
-            Expense Statistics
-          </Typography>
+          <ExpenseStatistics />
         </div>
         <div className="col-span-5">
           <Typography variant="h4" className="text-primary">
@@ -29,9 +28,7 @@ const DashboardPage = () => {
           </Typography>
         </div>
         <div className="col-span-7">
-          <Typography variant="h4" className="text-primary">
-            Balance History
-          </Typography>
+          <BalanceHistory />
         </div>
       </div>
     </DashboardLayout>
