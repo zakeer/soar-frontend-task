@@ -59,7 +59,7 @@ function ContactCard({
 function TransferSection() {
   const { data, isLoading } = useTransferContacts();
   const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
-  const [amount, setAmount] = useState("525.50");
+  const [amount, setAmount] = useState("");
 
   const handleAmountInputChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -130,19 +130,19 @@ function TransferSection() {
         <ScrollBar orientation="horizontal" />
       </ScrollArea>
 
-      <div className="flex flex-col md:flex-row gap-4 items-center">
+      <div className="flex flex-row gap-2 md:gap-4 items-center">
         <Typography className="text-secondary">Write Amount</Typography>
-        <div className="flex flex-1 gap-1 lg:gap-3 bg-primary/10 rounded-4xl overflow-hidden items-center">
+        <div className="flex flex-1 max-w-md ml-auto gap-1 lg:gap-3 bg-primary/10 rounded-4xl overflow-hidden items-center">
           <Input
             value={amount}
             onChange={handleAmountInputChange}
             className="bg-transparent shadow-none border-0 text-[#718EBF] placeholder:text-[#718EBF] p-4 md:p-5"
-            placeholder="Write Amount"
+            placeholder="525.00"
           />
           <Button
             variant="dark"
-            className="rounded-full flex gap-2 items-center h-full w-28 md:w-34 shrink-0 text-md font-normal py-3"
-            disabled={!selectedContact || transferMutation.isPending}
+            className="rounded-full flex gap-2 items-center h-full w-26 md:w-34 shrink-0 text-md font-normal py-3"
+            disabled={!selectedContact || transferMutation.isPending || !amount}
             onClick={handleTransfer}
           >
             Send

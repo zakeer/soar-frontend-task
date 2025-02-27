@@ -1,4 +1,4 @@
-import { Header } from "@/components/layout/Header";
+import { Header, SearchInput } from "@/components/layout/Header";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -34,11 +34,20 @@ export function DashboardLayout({ children, title }: DashboardLayoutProps) {
               </SheetTrigger>
             }
           />
-          <SheetContent side="left" className="w-64 p-0 h-full bg-card border-r border-gray-200">
+          <SheetContent
+            side="left"
+            className="w-64 p-0 h-full bg-card border-r border-gray-200"
+          >
             <Sidebar />
           </SheetContent>
         </Sheet>
-        <main className="p-4 md:p-6">{children}</main>
+
+        <main className="p-4 md:p-6 bg-card md:bg-muted">
+          <div className="mb-4 md:hidden">
+            <SearchInput />
+          </div>
+          {children}
+        </main>
       </div>
     </div>
   );

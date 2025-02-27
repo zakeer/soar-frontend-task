@@ -16,11 +16,11 @@ const UserAvatar = ({ src, alt }: { src: string; alt: string }) => (
   </Avatar>
 );
 
-const SearchInput = () => (
-  <div className="relative ">
+export const SearchInput = () => (
+  <div className="relative">
     <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-primary/60" />
     <Input
-      className="rounded-4xl bg-muted border-0 pl-9 shadow-0 text-primary/80 placeholder:text-primary/40"
+      className="rounded-4xl bg-muted border-0 pl-9 shadow-none text-primary/80 placeholder:text-primary/40"
       placeholder="Search for something"
     />
   </div>
