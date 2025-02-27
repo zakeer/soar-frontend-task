@@ -2,7 +2,9 @@ import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { EditProfileForm } from "@/features/settings/EditProfileForm";
+import { useDocumentTitle } from "usehooks-ts";
 const SettingsPage = () => {
+  useDocumentTitle("Soar Task: Settings");
   return (
     <DashboardLayout title="Settings">
       <Card className="bg-white rounded-2xl">

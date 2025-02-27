@@ -12,9 +12,22 @@ import {
   YAxis,
   Tooltip,
 } from "recharts";
+import { useMediaQuery } from "usehooks-ts";
+import { useMemo } from "react";
 
 function ActivityChart() {
   const { data, isLoading, error } = useWeeklyActivity();
+  const withInMobileScreenLimit = useMediaQuery("(max-width: 768px)");
+
+  const DIMENSION = useMemo(() => {
+    const radius = withInMobileScreenLimit ? 8 : 16;
+    return {
+      RADIUS: radius,
+      BAR_SIZE: radius,
+      LEGEND: radius,
+      BAR_GAP: withInMobileScreenLimit ? 4 : 12
+    };
+  }, [withInMobileScreenLimit]);
 
   if (isLoading) {
     return <Skeleton className="h-[300px] w-full" />;
@@ -29,7 +42,7 @@ function ActivityChart() {
       <BarChart
         data={data.activities}
         margin={{ top: 0, right: 0, left: -20, bottom: 0 }}
-        barGap={12}
+        barGap={DIMENSION.BAR_GAP}
       >
         <CartesianGrid
           strokeDasharray="3 3"
@@ -60,7 +73,7 @@ function ActivityChart() {
         />
         <Legend
           iconType="circle"
-          iconSize={8}
+          iconSize={DIMENSION.BAR_SIZE}
           align="right"
           verticalAlign="top"
           wrapperStyle={{ paddingBottom: "20px" }}
@@ -69,15 +82,15 @@ function ActivityChart() {
           name="Withdraw"
           dataKey="withdraw"
           fill="#343C6A"
-          radius={16}
-          barSize={16}
+          radius={DIMENSION.RADIUS}
+          barSize={DIMENSION.BAR_SIZE}
         />
         <Bar
           name="Deposit"
           dataKey="deposit"
           fill="#396AFF"
-          radius={16}
-          barSize={16}
+          radius={DIMENSION.RADIUS}
+          barSize={DIMENSION.BAR_SIZE}
         />
       </BarChart>
     </ResponsiveContainer>

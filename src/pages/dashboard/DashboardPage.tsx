@@ -5,8 +5,10 @@ import { WeeklyActivity } from "@/features/activity/WeeklyActivityChart";
 import { ExpenseStatistics } from "@/features/expenses/ExpenseStatisticsChart";
 import { BalanceHistory } from "@/features/balance/BalanceHistoryChart";
 import { QuickTransfer } from "@/features/transfer/QuickTransfer";
+import { useDocumentTitle } from "usehooks-ts";
 
 const DashboardPage = () => {
+  useDocumentTitle("Soar Task: Overview Dashboard");
   return (
     <DashboardLayout title="Overview">
       <div className="grid grid-cols-12 gap-5">

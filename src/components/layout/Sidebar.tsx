@@ -9,7 +9,7 @@ type NavigationType = {
   label: string;
 };
 
-const navigation: NavigationType[] = [
+export const navigation: NavigationType[] = [
   { icon: "dashboard", label: "Dashboard", href: "/" },
   { icon: "transactions", label: "Transactions", href: "/transactions" },
   { icon: "accounts", label: "Accounts", href: "/accounts" },
