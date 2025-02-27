@@ -132,7 +132,7 @@ function TransferSection() {
 
       <div className="flex flex-row gap-2 md:gap-4 items-center">
         <Typography className="text-secondary">Write Amount</Typography>
-        <div className="flex flex-1 max-w-md ml-auto gap-1 lg:gap-3 bg-primary/10 rounded-4xl overflow-hidden items-center">
+        <div className="flex flex-1 max-w-md ml-auto gap-1 lg:gap-3 bg-primary/10 rounded-4xl overflow-hidden">
           <Input
             value={amount}
             onChange={handleAmountInputChange}
@@ -141,7 +141,7 @@ function TransferSection() {
           />
           <Button
             variant="dark"
-            className="rounded-full flex gap-2 items-center h-full w-26 md:w-34 shrink-0 text-md font-normal py-3"
+            className="rounded-full flex gap-2 items-center h-auto w-26 md:w-34 shrink-0 text-md font-normal py-3"
             disabled={!selectedContact || transferMutation.isPending || !amount}
             onClick={handleTransfer}
           >

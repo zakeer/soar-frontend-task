@@ -3,6 +3,7 @@ import { Typography } from "@/components/ui/typography";
 import { Card, CardContent } from "@/components/ui/card";
 import { TransactionItem } from "./TransactionItem";
 import { useRecentTransactions } from "@/features/transactions/query/transaction.queries";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 function Transactions() {
   const { data: transactions, isLoading, error } = useRecentTransactions();
@@ -30,11 +31,14 @@ function Transactions() {
   }
 
   return (
-    <div className="space-y-5">
-      {transactions.map((transaction) => (
-        <TransactionItem key={transaction.id} transaction={transaction} />
-      ))}
-    </div>
+    <ScrollArea className="w-full h-46 pr-4 md:pr-6">
+      <div className="space-y-5">
+        {transactions.map((transaction) => (
+          <TransactionItem key={transaction.id} transaction={transaction} />
+        ))}
+      </div>
+      <ScrollBar orientation="vertical" />
+    </ScrollArea>
   );
 }
 
@@ -45,7 +49,7 @@ export function RecentTransactions() {
         Recent Transactions
       </Typography>
       <Card>
-        <CardContent>
+        <CardContent className="md:pr-0 pr-0">
           <Transactions />
         </CardContent>
       </Card>

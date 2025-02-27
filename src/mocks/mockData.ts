@@ -50,6 +50,24 @@ export const mockTransactions: Transaction[] = [
     type: "transfer",
     status: "success",
   },
+
+  {
+    id: "4",
+    title: "Deposit Paypal",
+    date: "26 January 2025",
+    amount: 2500,
+    type: "paypal",
+    status: "success",
+  },
+
+  {
+    id: "5",
+    title: "Jemi Wilson",
+    date: "27 January 2025",
+    amount: 2500,
+    type: "transfer",
+    status: "success",
+  },
 ];
 
 export const mockWeeklyData: WeeklyActivityData = {
@@ -93,6 +111,18 @@ export const mockTransferData: TransferData = {
       name: "Workman",
       role: "Designer",
       image: "https://avatar.iran.liara.run/public?3",
+    },
+    {
+      id: "4",
+      name: "Bator Livia",
+      role: "CEO",
+      image: "https://avatar.iran.liara.run/public?4",
+    },
+    {
+      id: "5",
+      name: "Press Randy",
+      role: "Director",
+      image: "https://avatar.iran.liara.run/public?5",
     },
   ],
 };
