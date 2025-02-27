@@ -3,7 +3,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Typography } from "@/components/ui/typography";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Skeleton } from "@/components/ui/skeleton";
 import {
   useQuickTransferMutation,
@@ -12,6 +11,13 @@ import {
 import PaperPlaneIcon from "@/components/icons/PaperPlane";
 import { toast } from "react-toastify";
 import { Contact } from "@/features/transfer/transfer.types";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 function ContactCard({
   image,
@@ -116,19 +122,25 @@ function TransferSection() {
 
   return (
     <div className="flex flex-col gap-4">
-      <ScrollArea className="w-full">
-        <div className="flex gap-4 pb-4">
+      {/* <ScrollArea className="w-full"> */}
+      <Carousel className="w-full">
+        <CarouselContent className="relative">
           {data?.contacts.map((contact) => (
-            <ContactCard
-              key={contact.id}
-              {...contact}
-              isSelected={selectedContact?.id === contact.id}
-              onClick={() => setSelectedContact(contact)}
-            />
+            <CarouselItem className="basis-1/3 flex justify-center">
+              <ContactCard
+                key={contact.id}
+                {...contact}
+                isSelected={selectedContact?.id === contact.id}
+                onClick={() => setSelectedContact(contact)}
+              />
+            </CarouselItem>
           ))}
-        </div>
-        <ScrollBar orientation="horizontal" />
-      </ScrollArea>
+        </CarouselContent>
+        <CarouselPrevious hideOnDisabled />
+        <CarouselNext hideOnDisabled />
+      </Carousel>
+      {/* <ScrollBar orientation="horizontal" /> */}
+      {/* </ScrollArea> */}
 
       <div className="flex flex-row gap-2 md:gap-4 items-center">
         <Typography className="text-secondary">Write Amount</Typography>
