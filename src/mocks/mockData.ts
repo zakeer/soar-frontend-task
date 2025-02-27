@@ -2,6 +2,7 @@ import { WeeklyActivityData } from "@/features/activity/activity.types";
 import { BalanceData } from "@/features/balance/balance.types";
 import { Card } from "@/features/cards/CreditCard";
 import { ExpenseStatistics } from "@/features/expenses/expenses.types";
+import { UserProfile } from "@/features/settings/setting.types";
 import { Transaction } from "@/features/transactions/transaction.types";
 import { TransferData } from "@/features/transfer/transfer.types";
 
@@ -106,4 +107,19 @@ export const mockBalanceData: BalanceData = {
     { month: "Dec", value: 580 },
     { month: "Jan", value: 600 },
   ],
+};
+
+export const mockUserProfile: UserProfile = {
+  name: "Charlene Reed",
+  username: "Charlene Reed",
+  email: "charlenereed@gmail.com",
+  password: "**********", // masked for security
+  dateOfBirth: "1990-01-25", // ISO format for proper date handling
+  presentAddress: "San Jose, California, USA",
+  permanentAddress: "San Jose, California, USA",
+  city: "San Jose",
+  postalCode: "45962",
+  country: "USA",
+  avatar:
+    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-hs1nz18t2zhrYoY6sHrJFzrvBHpt5e.png", // Using the provided image URL
 };
