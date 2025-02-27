@@ -88,7 +88,7 @@ function StatisticsChart() {
           cy="50%"
           labelLine={false}
           label={renderCustomizedLabel}
-          outerRadius={140}
+          outerRadius={130}
           innerRadius={0}
           fill="#8884d8"
           dataKey="value"
@@ -113,13 +113,10 @@ function StatisticsChart() {
 export function ExpenseStatistics() {
   return (
     <div className="flex flex-col gap-3">
-      <Typography
-        variant="h4"
-        className="text-[#343C6A] text-2xl font-semibold h-9 flex items-center"
-      >
+      <Typography variant="h4" className="text-primary h-9 flex items-center">
         Expense Statistics
       </Typography>
-      <Card className="bg-white rounded-2xl">
+      <Card>
         <CardContent>
           <StatisticsChart />
         </CardContent>

@@ -1,7 +1,7 @@
 import React from "react";
 
 type TypographyProps = {
-  variant?: "h1" | "h2" | "h3" | "h4" | "p" | "large" | "small" | "muted";
+  variant?: "h1" | "h2" | "h3" | "h4" | "h5" | "p" | "large" | "small" | "muted";
   children: React.ReactNode;
   className?: string;
 };
@@ -11,6 +11,7 @@ const variantStyles: Record<string, string> = {
   h2: "scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0",
   h3: "scroll-m-20 text-2xl font-semibold tracking-tight",
   h4: "scroll-m-20 text-xl font-semibold tracking-tight",
+  h5: "scroll-m-20 text-md font-semibold tracking-tight",
   p: "",
   large: "text-lg font-semibold",
   small: "text-sm font-medium leading-none",
