@@ -110,7 +110,7 @@ function StatisticsChart() {
   );
 }
 
-export function ExpenseStatistics() {
+export default function ExpenseStatistics() {
   return (
     <div className="flex flex-col gap-3">
       <Typography variant="h4" className="text-primary h-9 flex items-center">

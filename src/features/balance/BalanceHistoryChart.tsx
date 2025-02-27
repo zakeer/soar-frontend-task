@@ -80,7 +80,7 @@ function HistoryChart() {
   );
 }
 
-export function BalanceHistory() {
+export default function BalanceHistory() {
   return (
     <div className="flex flex-col gap-3">
       <Typography variant="h4" className="text-primary h-9 flex items-center">

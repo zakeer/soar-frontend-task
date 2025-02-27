@@ -36,7 +36,7 @@ function CardList() {
   );
 }
 
-export function MyCards() {
+export default function MyCards() {
   const handleSeeAllClick = () =>
     toast.info("My Cards Page implementation is in progress");
 

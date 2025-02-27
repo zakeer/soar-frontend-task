@@ -1,12 +1,16 @@
+import React, { Suspense } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import DashboardPage from "@/pages/dashboard/DashboardPage";
-import SettingsPage from "@/pages/settings/SettingsPage";
-import ComingSoonPage from "@/pages/ComingSoonPage";
 import { ApiQueryClientProvider } from "@/providers/ApiQueryClientProvider";
 import "./App.css";
 import { navigation } from "@/components/layout/Sidebar";
-import NotFoundPage from "@/pages/NotFoundPage";
+import { Spinner } from "@/components/ui/spinner";
+
+// Lazy load pages
+const Dashboard = React.lazy(() => import("@/pages/dashboard/DashboardPage"));
+const Settings = React.lazy(() => import("@/pages/settings/SettingsPage"));
+const ComingSoon = React.lazy(() => import("@/pages/ComingSoonPage"));
+const NotFound = React.lazy(() => import("@/pages/NotFoundPage"));
 
 const implementedPages = ["/", "/settings"];
 
@@ -16,7 +20,7 @@ const comingSoonPageRoutes = navigation
     <Route
       key={nav.href}
       path={nav.href}
-      element={<ComingSoonPage title={nav.label} />}
+      element={<ComingSoon title={nav.label} />}
     />
   ));
 
@@ -24,13 +28,14 @@ function App() {
   return (
     <ApiQueryClientProvider clearOnUnmount>
       <BrowserRouter>
-        <Routes>
-          <Route path="*" element={<NotFoundPage />} />
-
-          <Route path="/" element={<DashboardPage />} />
-          <Route path="/settings" element={<SettingsPage />} />
-          {comingSoonPageRoutes}
-        </Routes>
+        <Suspense fallback={<Spinner />}>
+          <Routes>
+            <Route path="*" element={<NotFound />} />
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/settings" element={<Settings />} />
+            {comingSoonPageRoutes}
+          </Routes>
+        </Suspense>
       </BrowserRouter>
       <ToastContainer position="bottom-center" />
     </ApiQueryClientProvider>

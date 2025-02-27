@@ -42,7 +42,7 @@ function Transactions() {
   );
 }
 
-export function RecentTransactions() {
+export default function RecentTransactions() {
   return (
     <div className="flex flex-col gap-3">
       <Typography variant="h4" className="text-primary h-9 flex items-center">
