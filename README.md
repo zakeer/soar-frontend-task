@@ -1,50 +1,101 @@
-# React + TypeScript + Vite
+# Soar Task Financial Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Overview
 
-Currently, two official plugins are available:
+The task is to build a financial dashboard application with multiple views for the user. The application should have responsive design and functionality as shown in the provided [Figma Link](https://www.figma.com/design/Lf57jfEvFsQjNZdQi07qyv/Soar-Front-End-Dev-Task?node-id=0-1&t=Peh4DOcavX88B4up-1). The main purpose of this application is to display an overview of financial activities, card details, transactions, statistics, and user settings.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[Task PDF](./Front-End_Developer_Assessment_Task_Requirements_Document.pdf)
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Prerequisites
 
-- Configure the top-level `parserOptions` property like this:
+Before you begin, ensure you have the following installed on your system:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- Node.js (v18.0.0 or later)
+- pnpm (v9.0.0 or later)
+
+## Getting Started
+
+### Installing pnpm
+
+If you don't have pnpm installed, you can install it using one of the following methods:
+
+#### Using npm
+
+```bash
+npm install -g pnpm
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Cloning the Repository
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+To clone the repository, run the following command in your terminal:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+git clone https://github.com/zakeer/soar-frontend-task.git
+cd soar-frontend-task
 ```
+
+Install dependencies
+
+```bash
+pnpm install
+```
+
+Start Local Development
+
+```bash
+pnpm run dev
+```
+
+## Features
+
+- Interactive dashboard with financial overview
+- Transaction history and management
+- Expense statistics and visualizations
+- Responsive design for various screen sizes
+- User profile management with avatar upload
+- Real-time data updates using React Query
+
+### Detailed Features
+
+#### Dashboard
+
+- Overview of financial status
+- Quick access to recent transactions
+- Visual representations of expenses and income
+
+#### Transactions
+
+- List of recent transactions
+
+#### Expense Tracking
+
+- Pie chart visualization of expenses by category
+- Weekly activity bar chart
+- Balance history line graph
+
+#### Quick Transfer
+
+- Easily transfer money to frequent contacts
+
+#### Settings Page
+
+- Edit user profile information
+- Avatar upload and management
+  - Interactive image cropping
+  - Zoom and pan options for precise avatar selection
+  - Preview of the cropped avatar before saving
+
+## Technologies Used
+
+- React 19
+- Vite
+- TypeScript
+- React Router for navigation
+- Tailwind CSS along with Shadcn UI for styling
+- Recharts for data visualization
+- React Query for data fetching and caching
+- MSW (Mock Service Worker) for API mocking
+- React Hook Form for form management
+- Zod for form validation
+- React Easy Crop for image cropping
