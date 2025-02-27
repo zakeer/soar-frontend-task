@@ -33,7 +33,11 @@ function ContactCard({
           className="w-full h-full object-cover"
         />
       </div>
-      <h5 className={`text-primary ${isSelected ? "font-bold" : "font-light"}`}>
+      <h5
+        className={`text-primary whitespace-nowrap ${
+          isSelected ? "font-bold" : "font-light"
+        }`}
+      >
         {name}
       </h5>
       <p
@@ -63,7 +67,7 @@ function TransferSection() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="flex flex-col gap-4">
       <ScrollArea className="w-full">
         <div className="flex gap-4 pb-4">
           {data?.contacts.map((contact) => (
@@ -78,22 +82,22 @@ function TransferSection() {
         <ScrollBar orientation="horizontal" />
       </ScrollArea>
 
-      <div className="flex gap-4 items-center">
+      <div className="flex flex-col md:flex-row gap-4 items-center">
         <Typography className="text-secondary">Write Amount</Typography>
-        <div className="flex flex-1 gap-3 bg-primary/10 rounded-4xl overflow-hidden items-center">
+        <div className="flex flex-1 gap-1 lg:gap-3 bg-primary/10 rounded-4xl overflow-hidden items-center">
           <Input
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
-            className="bg-transparent shadow-none border-0 text-[#718EBF] placeholder:text-[#718EBF] p-5"
+            className="bg-transparent shadow-none border-0 text-[#718EBF] placeholder:text-[#718EBF] p-4 md:p-5"
             placeholder="Write Amount"
           />
           <Button
             variant="dark"
-            className="rounded-full flex gap-2 items-center h-full w-34 shrink-0 text-md font-normal py-3"
+            className="rounded-full flex gap-2 items-center h-full w-28 md:w-34 shrink-0 text-md font-normal py-3"
             disabled={!selectedContact}
           >
             Send
-            <PaperPlaneIcon className="size-7 ml-2" />
+            <PaperPlaneIcon className="size-5 lg:size-7 ml-2" />
           </Button>
         </div>
       </div>

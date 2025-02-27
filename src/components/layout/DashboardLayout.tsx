@@ -17,7 +17,7 @@ export function DashboardLayout({ children, title }: DashboardLayoutProps) {
   return (
     <div className="flex min-h-screen">
       {/* Desktop Sidebar */}
-      <div className="hidden md:block">
+      <div className="hidden md:block h-screen overflow-hidden sticky top-0">
         <Sidebar />
       </div>
 
@@ -34,7 +34,7 @@ export function DashboardLayout({ children, title }: DashboardLayoutProps) {
               </SheetTrigger>
             }
           />
-          <SheetContent side="left" className="w-64 p-0">
+          <SheetContent side="left" className="w-64 p-0 h-full bg-card border-r border-gray-200">
             <Sidebar />
           </SheetContent>
         </Sheet>

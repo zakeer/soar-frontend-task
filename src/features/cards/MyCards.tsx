@@ -25,9 +25,9 @@ function CardList() {
 
   return (
     <ScrollArea className="w-full">
-      <div className="flex flex-col md:flex-row gap-6">
+      <div className="flex flex-row gap-6">
         {cards?.map((card: Card) => (
-          <CreditCard key={card.id} {...card} className="flex-1" />
+          <CreditCard key={card.id} {...card} className="flex-1 shrink-0" />
         ))}
       </div>
       <ScrollBar orientation="horizontal" className="md:hidden" />

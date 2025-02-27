@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { IconName, SidebarIcon } from "@/components/layout/sidebar-icons";
 import soarIcon from "@icons/soar.svg";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 type NavigationType = {
   icon: IconName;
@@ -22,37 +23,38 @@ const navigation: NavigationType[] = [
 
 export function Sidebar() {
   return (
-    <div className="w-64 border-r border-gray-200  bg-card sticky top-0 z-10">
+    <div className="w-64 border-r border-gray-200  bg-card h-full flex flex-col">
       <div className="flex items-center gap-2 text-xl font-extrabold text-primary px-8 py-6">
         <img src={soarIcon} alt="Soar Task" />
         Soar Task
       </div>
-
-      <nav className="py-4">
-        {navigation.map((item) => {
-          return (
-            <NavLink
-              key={item.href}
-              to={item.href}
-              className={({ isActive }) =>
-                `relative w-full flex justify-start gap-6 py-4 px-8 hover:opacity-100 ${
-                  isActive ? "" : "opacity-45"
-                }`
-              }
-            >
-              {({ isActive }) => (
-                <>
-                  {isActive && (
-                    <div className="w-2 h-full absolute left-0 top-0 bg-gray-900 rounded-r-xl" />
-                  )}
-                  <SidebarIcon name={item.icon} />
-                  {item.label}
-                </>
-              )}
-            </NavLink>
-          );
-        })}
-      </nav>
+      <ScrollArea className="flex-1 overflow-hidden">
+        <nav className="py-4">
+          {navigation.map((item) => {
+            return (
+              <NavLink
+                key={item.href}
+                to={item.href}
+                className={({ isActive }) =>
+                  `relative w-full flex justify-start gap-6 py-4 px-8 hover:opacity-100 ${
+                    isActive ? "" : "opacity-45"
+                  }`
+                }
+              >
+                {({ isActive }) => (
+                  <>
+                    {isActive && (
+                      <div className="w-2 h-full absolute left-0 top-0 bg-gray-900 rounded-r-xl" />
+                    )}
+                    <SidebarIcon name={item.icon} />
+                    {item.label}
+                  </>
+                )}
+              </NavLink>
+            );
+          })}
+        </nav>
+      </ScrollArea>
     </div>
   );
 }

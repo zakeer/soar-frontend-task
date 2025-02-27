@@ -134,12 +134,12 @@ export function CreditCard({
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-3xl max-w-sm border border-primary/10",
+        "relative overflow-hidden rounded-3xl min-w-84 flex-1 max-w-sm border border-primary/10",
         cardBackground,
         className
       )}
     >
-      <div className="p-6">
+      <div className="p-4 md:p-6">
         <BalanceSection balance={balance} type={type} />
         <CardHolderSection
           cardHolder={cardHolder}
