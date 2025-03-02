@@ -23,6 +23,22 @@ export const mockCards: Card[] = [
     validThru: "12/22",
     type: "light",
   },
+  {
+    id: "3",
+    balance: 5756,
+    cardHolder: "Eddy Cusuma",
+    cardNumber: "3778 **** **** 1234",
+    validThru: "12/22",
+    type: "dark",
+  },
+  {
+    id: "4",
+    balance: 5706,
+    cardHolder: "Eddy Cusuma 2",
+    cardNumber: "3778 **** **** 1234",
+    validThru: "12/22",
+    type: "light",
+  },
 ];
 
 export const mockTransactions: Transaction[] = [

@@ -42,11 +42,11 @@ export function DashboardLayout({ children, title }: DashboardLayoutProps) {
           </SheetContent>
         </Sheet>
 
-        <main className="p-4 md:p-6 bg-card md:ring-ring/10">
-          <div className="mb-4 md:hidden">
+        <main className="md:ring-ring/10">
+          <div className="mb-4 md:hidden p-4 md:p-6 bg-card">
             <SearchInput />
           </div>
-          {children}
+          <div className="p-4 md:p-6 bg-muted">{children}</div>
         </main>
       </div>
     </div>
